@@ -3,12 +3,15 @@ import { useLang } from '../i18n.jsx'
 import { useStore } from '../context/StoreContext.jsx'
 import { sendInquiry, sendSubscription, isEmailConfigured } from '../lib/email.js'
 
+const INCOTERMS = ['FOB', 'CIF', 'EXW', 'FCA', 'CFR', 'DAP']
+
 export default function Contact() {
   const { t, lang } = useLang()
   const { company, products, addInquiry, addSubscriber } = useStore()
 
   const [form, setForm] = useState({
-    name: '', company: '', email: '', country: '', productId: '', message: ''
+    name: '', company: '', email: '', country: '',
+    productId: '', port: '', incoterm: 'FOB', volume: '', price: '', specs_req: ''
   })
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
@@ -21,7 +24,7 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!form.name || !form.email || !form.message) {
+    if (!form.name || !form.email || !form.specs_req) {
       setError(t('form_required'))
       return
     }
@@ -38,7 +41,7 @@ export default function Contact() {
       setEmailNote(t('admin_cfg_note'))
     }
     setSent(true)
-    setForm({ name: '', company: '', email: '', country: '', productId: '', message: '' })
+    setForm({ name: '', company: '', email: '', country: '', productId: '', port: '', incoterm: 'FOB', volume: '', price: '', specs_req: '' })
   }
 
   const handleSubscribe = async (e) => {
@@ -101,7 +104,7 @@ export default function Contact() {
               <input id="f-name" name="name" value={form.name} onChange={handleChange} />
             </div>
             <div className="form-row">
-              <label htmlFor="f-company">{t('form_company')}</label>
+              <label htmlFor="f-company">{t('form_company')} *</label>
               <input id="f-company" name="company" value={form.company} onChange={handleChange} />
             </div>
             <div className="form-row">
@@ -121,9 +124,31 @@ export default function Contact() {
                 ))}
               </select>
             </div>
+            <div className="form-grid-2">
+              <div className="form-row">
+                <label htmlFor="f-port">{t('form_port')}</label>
+                <input id="f-port" name="port" value={form.port} onChange={handleChange} placeholder="e.g. Rotterdam, NL" />
+              </div>
+              <div className="form-row">
+                <label htmlFor="f-incoterm">{t('form_incoterm')}</label>
+                <select id="f-incoterm" name="incoterm" value={form.incoterm} onChange={handleChange}>
+                  {INCOTERMS.map((it) => <option key={it} value={it}>{it}</option>)}
+                </select>
+              </div>
+            </div>
+            <div className="form-grid-2">
+              <div className="form-row">
+                <label htmlFor="f-volume">{t('form_volume')}</label>
+                <input id="f-volume" name="volume" value={form.volume} onChange={handleChange} placeholder="e.g. 1x20ft / 20 MT" />
+              </div>
+              <div className="form-row">
+                <label htmlFor="f-price">{t('form_price')}</label>
+                <input id="f-price" name="price" value={form.price} onChange={handleChange} placeholder="e.g. USD 1200/MT" />
+              </div>
+            </div>
             <div className="form-row">
-              <label htmlFor="f-message">{t('form_message')} *</label>
-              <textarea id="f-message" name="message" rows="4" value={form.message} onChange={handleChange} />
+              <label htmlFor="f-specs">{t('form_specs_req')} *</label>
+              <textarea id="f-specs" name="specs_req" rows="4" value={form.specs_req} onChange={handleChange} />
             </div>
             <button type="submit" className="btn">{t('form_submit')}</button>
           </form>

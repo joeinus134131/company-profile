@@ -5,7 +5,10 @@ import {
   products as initProducts,
   services as initServices,
   certifications as initCerts,
-  articles as initArticles
+  articles as initArticles,
+  exportProcess as initExportProcess,
+  paymentTerms as initPaymentTerms,
+  gallery as initGallery
 } from '../data/initialData.js'
 
 const StoreContext = createContext(null)
@@ -29,6 +32,9 @@ export function StoreProvider({ children }) {
   const [products, setProducts] = useState(persisted?.products ?? initProducts)
   const [services] = useState(initServices)
   const [certifications] = useState(initCerts)
+  const [exportProcess] = useState(initExportProcess)
+  const [paymentTerms] = useState(initPaymentTerms)
+  const [gallery] = useState(initGallery)
   const [articles, setArticles] = useState(persisted?.articles ?? initArticles)
   const [inquiries, setInquiries] = useState(persisted?.inquiries ?? [])
   const [subscribers, setSubscribers] = useState(persisted?.subscribers ?? [])
@@ -127,6 +133,9 @@ export function StoreProvider({ children }) {
     products,
     services,
     certifications,
+    exportProcess,
+    paymentTerms,
+    gallery,
     articles,
     inquiries,
     subscribers,

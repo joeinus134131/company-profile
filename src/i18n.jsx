@@ -111,7 +111,20 @@ const translations = {
     about_org: 'Struktur Organisasi',
     org: 'Tim',
     maps_title: 'Lokasi Kami',
-    admin_cfg_note: 'Email belum dikonfigurasi (VITE_EMAILJS_*). Inquiry tetap tersimpan secara lokal.'
+    admin_cfg_note: 'Email belum dikonfigurasi (VITE_EMAILJS_*). Inquiry tetap tersimpan secara lokal.',
+    process_title: 'Alur Kerja Ekspor',
+    process_sub: 'Cara buyer bertransaksi dengan kami, dari hulu ke hilir.',
+    payment_title: 'Ketentuan Pembayaran Internasional',
+    gallery_title: 'Operasional Kami',
+    gallery_sub: 'Dokumentasi asli aktivitas gudang, pelabuhan, dan sertifikasi.',
+    download_pdf: 'Unduh Spec Sheet (PDF)',
+    spec_sheet: 'Lembar Spesifikasi',
+    form_port: 'Pelabuhan Tujuan',
+    form_incoterm: 'Incoterms',
+    form_volume: 'Estimasi Volume Order',
+    form_price: 'Harga Target (opsional)',
+    form_specs_req: 'Spesifikasi Khusus yang Diinginkan',
+    enlarge: 'Klik untuk memperbesar'
   },
   en: {
     nav_home: 'Home',
@@ -221,12 +234,25 @@ const translations = {
     about_org: 'Organization Structure',
     org: 'Team',
     maps_title: 'Our Location',
-    admin_cfg_note: 'Email not configured (VITE_EMAILJS_*). Inquiry is still saved locally.'
+    admin_cfg_note: 'Email not configured (VITE_EMAILJS_*). Inquiry is still saved locally.',
+    process_title: 'Export Process',
+    process_sub: 'How buyers transact with us, from upstream to downstream.',
+    payment_title: 'International Payment Terms',
+    gallery_title: 'Our Operations',
+    gallery_sub: 'Real documentation of warehouse, port, and certification activities.',
+    download_pdf: 'Download Spec Sheet (PDF)',
+    spec_sheet: 'Specification Sheet',
+    form_port: 'Destination Port',
+    form_incoterm: 'Incoterms',
+    form_volume: 'Estimated Order Volume',
+    form_price: 'Target Price (optional)',
+    form_specs_req: 'Specific Requirements',
+    enlarge: 'Click to enlarge'
   }
 }
 
 export function LangProvider({ children }) {
-  const [lang, setLang] = useState(() => localStorage.getItem('nf_lang') || 'id')
+  const [lang, setLang] = useState(() => localStorage.getItem('nf_lang') || 'en')
 
   const toggleLang = useCallback(() => {
     setLang((prev) => {

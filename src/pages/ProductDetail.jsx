@@ -5,7 +5,7 @@ import { useStore } from '../context/StoreContext.jsx'
 export default function ProductDetail() {
   const { id } = useParams()
   const { t, lang } = useLang()
-  const { products, categories } = useStore()
+  const { products, categories, company } = useStore()
 
   const product = products.find((p) => p.id === id)
 
@@ -37,9 +37,32 @@ export default function ProductDetail() {
           <div className="detail-info">
             {cat && <span className="badge">{lang === 'id' ? cat.name_id : cat.name_en}</span>}
             <p className="detail-desc">{product[`desc_${lang}`]}</p>
+
+            <div className="spec-sheet-head">
+              <h3>{t('spec_sheet')}</h3>
+              <button
+                className="btn btn-sm"
+                onClick={async () => {
+                  const { downloadSpecSheet } = await import('../lib/pdf.js')
+                  downloadSpecSheet(product, company, lang)
+                }}
+              >
+                ⬇ {t('download_pdf')}
+              </button>
+            </div>
+
             <table className="spec-table">
               <tbody>
-                <tr><th>{t('spec')}</th><td>{product[`spec_${lang}`]}</td></tr>
+                {product.specs && product.specs.length > 0 ? (
+                  product.specs.map((s, i) => (
+                    <tr key={i}>
+                      <th>{lang === 'id' ? s.label_id : s.label_en}</th>
+                      <td>{s.value}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr><th>{t('spec')}</th><td>{product[`spec_${lang}`]}</td></tr>
+                )}
                 <tr><th>{t('moq')}</th><td>{product[`moq_${lang}`]}</td></tr>
                 <tr><th>{t('certificate')}</th><td>{product[`cert_${lang}`]}</td></tr>
               </tbody>

@@ -265,3 +265,134 @@ export const articles = [
       'Understanding certifications like ISO, HACCP, and HALAL is essential to enter international markets smoothly.'
   }
 ]
+
+// Spek standar internasional per produk (ditampilkan di detail & Spec Sheet PDF)
+export const productSpecs = {
+  p1: [
+    { label_id: 'Tingkat Kadar Air', label_en: 'Moisture Content', value: '< 3%' },
+    { label_id: 'Tipe Potongan', label_en: 'Cutting Type', value: 'Flakes / Shreds / Granulated' },
+    { label_id: 'Ketebalan', label_en: 'Thickness', value: '1–3 mm' },
+    { label_id: 'Grade', label_en: 'Grade', value: 'Premium A' },
+    { label_id: 'Kadar Lemak', label_en: 'Fat Content', value: '60–65%' },
+    { label_id: 'Kemasan', label_en: 'Packaging', value: '25 kg kraft bag, vacuum sealed' },
+    { label_id: 'Masa Simpan', label_en: 'Shelf Life', value: '12 months' },
+    { label_id: 'Standar', label_en: 'Standard', value: 'SNI, HALAL, ISO 9001' }
+  ],
+  p2: [
+    { label_id: 'Jenis', label_en: 'Type', value: 'Green Bean' },
+    { label_id: 'Grade', label_en: 'Grade', value: 'Grade 1 (Specialty)' },
+    { label_id: 'Kadar Air', label_en: 'Moisture', value: '< 12%' },
+    { label_id: 'Cacat', label_en: 'Defects', value: '< 5 (SCA)' },
+    { label_id: 'Kemasan', label_en: 'Packaging', value: '60 kg GrainPro / jute sack' },
+    { label_id: 'Ketinggian', label_en: 'Altitude', value: '1,200–1,500 masl' },
+    { label_id: 'Masa Simpan', label_en: 'Shelf Life', value: '12 months' },
+    { label_id: 'Standar', label_en: 'Standard', value: 'SNI' }
+  ],
+  p3: [
+    { label_id: 'Kadar Air', label_en: 'Moisture', value: '< 35%' },
+    { label_id: 'Jenis', label_en: 'Type', value: 'Cottonii / Spinosum' },
+    { label_id: 'Kemasan', label_en: 'Packaging', value: '25 kg PP bag' },
+    { label_id: 'Masa Simpan', label_en: 'Shelf Life', value: '6 months' },
+    { label_id: 'Standar', label_en: 'Standard', value: 'HACCP, HALAL' }
+  ],
+  p4: [
+    { label_id: 'Tipe', label_en: 'Type', value: 'IQF Loins' },
+    { label_id: 'Suhu', label_en: 'Temperature', value: '-18°C' },
+    { label_id: 'Grade', label_en: 'Grade', value: 'A (Sashimi-grade available)' },
+    { label_id: 'Kemasan', label_en: 'Packaging', value: '10 kg master carton' },
+    { label_id: 'Masa Simpan', label_en: 'Shelf Life', value: '24 months frozen' },
+    { label_id: 'Standar', label_en: 'Standard', value: 'HACCP, ISO 22000' }
+  ],
+  p5: [
+    { label_id: 'Material', label_en: 'Material', value: 'Natural rattan (Manau/Cane)' },
+    { label_id: 'Finishing', label_en: 'Finish', value: 'Natural / Lacquer' },
+    { label_id: 'Custom', label_en: 'Custom', value: 'Yes (OEM/ODM)' },
+    { label_id: 'Kemasan', label_en: 'Packaging', value: 'Corrugated carton, KD' },
+    { label_id: 'Standar', label_en: 'Standard', value: 'FSC optional, ISO 9001' }
+  ],
+  p6: [
+    { label_id: 'Material', label_en: 'Material', value: 'Solid teak / mahogany' },
+    { label_id: 'Finishing', label_en: 'Finish', value: 'Varnish / natural oil' },
+    { label_id: 'Custom', label_en: 'Custom', value: 'Yes' },
+    { label_id: 'Kemasan', label_en: 'Packaging', value: 'Bubble wrap + carton' },
+    { label_id: 'Standar', label_en: 'Standard', value: 'V-Legal, SVLK' }
+  ],
+  p7: [
+    { label_id: 'Spesifikasi', label_en: 'Specification', value: 'Custom per buyer' },
+    { label_id: 'MOQ', label_en: 'MOQ', value: 'Negotiable' },
+    { label_id: 'Standar', label_en: 'Standard', value: 'ISO 9001' }
+  ],
+  p8: [
+    { label_id: 'SiO2', label_en: 'SiO2', value: '> 99%' },
+    { label_id: 'Mesh', label_en: 'Mesh', value: '30–100' },
+    { label_id: 'Fe2O3', label_en: 'Fe2O3', value: '< 0.05%' },
+    { label_id: 'Kemasan', label_en: 'Packaging', value: '50 kg PP / jumbo bag' },
+    { label_id: 'Standar', label_en: 'Standard', value: 'ISO 9001' }
+  ]
+}
+
+// Lampirkan specs ke produk
+products.forEach((p) => {
+  p.specs = productSpecs[p.id] || []
+})
+
+// Alur kerja ekspor (hulu -> hilir)
+export const exportProcess = [
+  {
+    id: 'step1',
+    icon: '🌱',
+    title_id: 'Sourcing',
+    title_en: 'Sourcing',
+    desc_id: 'Menyeleksi petani/pabrik terverifikasi & negosiasi harga.',
+    desc_en: 'Select verified farmers/factories & negotiate pricing.'
+  },
+  {
+    id: 'step2',
+    icon: '🔍',
+    title_id: 'Quality Control',
+    title_en: 'Quality Control',
+    desc_id: 'Inspeksi & uji lab pra-pengiriman sesuai standar internasional.',
+    desc_en: 'Pre-shipment lab test & inspection to international standards.'
+  },
+  {
+    id: 'step3',
+    icon: '📦',
+    title_id: 'Packaging',
+    title_en: 'Packaging',
+    desc_id: 'Pengemasan ekspor & pelabelan sesuai permintaan buyer.',
+    desc_en: 'Export-grade packing & labelling per buyer requirement.'
+  },
+  {
+    id: 'step4',
+    icon: '📑',
+    title_id: 'Dokumentasi & Custom',
+    title_en: 'Documentation & Customs',
+    desc_id: 'Penyediaan COO/FTA, invoice, dan proses kepabeanan.',
+    desc_en: 'COO/FTA, invoice, and customs clearance handling.'
+  },
+  {
+    id: 'step5',
+    icon: '🚢',
+    title_id: 'Shipping',
+    title_en: 'Shipping',
+    desc_id: 'Koordinasi freight, asuransi, hingga tiba di pelabuhan tujuan.',
+    desc_en: 'Freight & insurance coordination to destination port.'
+  }
+]
+
+// Ketentuan pembayaran internasional
+export const paymentTerms = [
+  { id: 'pt1', icon: '🏦', name_id: 'L/C (Letter of Credit)', name_en: 'L/C (Letter of Credit)', desc_id: 'Pembayaran aman via bank, paling umum untuk shipment besar.', desc_en: 'Secure bank-backed payment, common for large shipments.' },
+  { id: 'pt2', icon: '💱', name_id: 'T/T (Telegraphic Transfer)', name_en: 'T/T (Telegraphic Transfer)', desc_id: 'Transfer bank: T/T 30% DP + 70% sebelum/pasca BL.', desc_en: 'Bank transfer: T/T 30% DP + 70% before/after BL.' },
+  { id: 'pt3', icon: '🤝', name_id: 'Advanced Payment', name_en: 'Advanced Payment', desc_id: 'Untuk order percobaan/kecil dengan trust tinggi.', desc_en: 'For trial/small orders with high trust.' }
+]
+
+// Galeri operasional (ganti dengan foto asli perusahaan)
+export const gallery = [
+  { id: 'g1', type: 'image', src: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80', caption_id: 'Aktivitas Gudang', caption_en: 'Warehouse Activity' },
+  { id: 'g2', type: 'image', src: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80', caption_id: 'Loading Kontainer di Pelabuhan', caption_en: 'Container Loading at Port' },
+  { id: 'g3', type: 'image', src: 'https://images.unsplash.com/photo-1565891741441-64926e441838?w=800&q=80', caption_id: 'Sortir & Quality Control', caption_en: 'Sorting & Quality Control' },
+  { id: 'g4', type: 'image', src: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80', caption_id: 'Dokumen Sertifikasi (ISO/HACCP)', caption_en: 'Certification Documents (ISO/HACCP)' },
+  { id: 'g5', type: 'image', src: 'https://images.unsplash.com/photo-1605733513597-a8f8341084e6?w=800&q=80', caption_id: 'Tim Ekspor & Dokumentasi', caption_en: 'Export & Documentation Team' },
+  { id: 'g6', type: 'image', src: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80', caption_id: 'Kapal Pengiriman Ekspor', caption_en: 'Export Vessel' }
+]

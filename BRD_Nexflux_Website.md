@@ -252,4 +252,20 @@ Katalog menampung produk ekspor yang ditawarkan. Setiap produk memiliki atribut 
 
 ---
 
-*Dokumen ini adalah versi 1.0 BRD. Dapat direvisi seiring tahapan SDLC dan validasi kebutuhan dengan PT Nexflux Indonesia Abadi.*
+## 15. Revisi / Tambahan dari Hasil Review (Google Gemini)
+
+Berdasarkan audit UX/ekspor, berikut penambahan kebutuhan (berlaku efektif Rev 1.1):
+
+| ID | Kebutuhan | Prioritas | Status |
+|----|-----------|-----------|--------|
+| FR-16 | Multi-bahasa dengan **bahasa utama English** (default EN) + switcher ID/EN, karena target importir global | High | ✅ Done (default EN, switcher ada) |
+| FR-17 | **Lembar Spesifikasi Produk** berstandar internasional (moisture, cutting type, thickness, grade, packaging, shelf life) + tombol **Download Spec Sheet (PDF)** per produk | High | ✅ Done |
+| FR-18 | **Alur Kerja Ekspor** (diagram: Sourcing → QC → Packaging → Documentation/Customs → Shipping) + **Ketentuan Pembayaran Internasional** (L/C, T/T, Advanced) | High | ✅ Done |
+| FR-19 | **Galeri Operasional** (gudang, loading kontainer, port, sertifikat) dengan fitur klik-perbesar (lightbox) untuk validasi visual | Medium | ✅ Done |
+| FR-20 | **Formulir Inquiry B2B Terstruktur**: Nama, Perusahaan, Email, Negara, Produk, Pelabuhan Tujuan, Incoterms (FOB/CIF/dst), Estimasi Volume, Harga Target, Spesifikasi Khusus | High | ✅ Done |
+
+> Catatan: Gambar galeri & produk masih menggunakan aset placeholder — wajib diganti dengan foto asli operasional perusahaan sebelum publikasi (lihat NFR terkait).
+
+---
+
+*Dokumen ini adalah versi 1.1 BRD (termasuk revisi hasil review). Dapat direvisi seiring tahapan SDLC dan validasi kebutuhan dengan PT Nexflux Indonesia Abadi.*

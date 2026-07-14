@@ -23,7 +23,11 @@ export async function sendInquiry(data) {
         email: data.email || '',
         country: data.country || '-',
         product: data.productName || '-',
-        message: data.message || ''
+        port: data.port || '-',
+        incoterm: data.incoterm || '-',
+        volume: data.volume || '-',
+        price: data.price || '-',
+        message: data.specs_req || '-'
       },
       { publicKey: PUBLIC_KEY }
     )

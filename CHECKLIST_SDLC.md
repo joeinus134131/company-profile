@@ -173,3 +173,25 @@
 Saat ini **tanpa backend** (data di localStorage) agar langsung bisa dipakai.
 Untuk skala produksi & NFR-03/NFR-09, rekomendasikan tambah backend
 (Node.js/Express atau Laravel) + DB (PostgreSQL) sesuai usulan BRD §8.
+
+---
+
+## REVISI HASIL REVIEW (Google Gemini) — Status
+
+| ID | Item Review | Status | Bukti |
+|----|-------------|--------|-------|
+| FR-16 | Bahasa utama English + switcher ID/EN | ✅ | default `lang='en'` (`i18n.jsx`), switcher di navbar |
+| FR-17 | Spec sheet internasional + PDF download | ✅ | `productSpecs` (`initialData.js`), `downloadSpecSheet` (`lib/pdf.js`), tombol di `ProductDetail.jsx` |
+| FR-18 | Alur kerja ekspor + payment terms | ✅ | `exportProcess` + `paymentTerms` di `Services.jsx` |
+| FR-19 | Galeri operasional + lightbox | ✅ | `gallery` + lightbox di `Home.jsx` |
+| FR-20 | Form inquiry B2B terstruktur | ✅ | field port/incoterm/volume/price/specs_req di `Contact.jsx` |
+
+### Task Remaining (bukan blocking)
+- [ ] Ganti foto placeholder galeri & produk dengan **foto asli operasional** (warehouse, port, sertifikat).
+- [ ] Isi `.env` (`VITE_EMAILJS_*`) agar inquiry benar-benar terkirim ke email.
+- [ ] Deploy aktual + domain + SSL (config sudah ada).
+- [ ] Ukur performa dengan Lighthouse (NFR-01).
+
+### Ringkasan Akhir
+- FR total: **20** (15 awal + 5 revisi) → **20/20 ✅**
+- Seluruh poin review Gemini **terpenuhi** di level fungsional; penyempurnaan berikutnya bersifat konten (foto asli) & infrastruktur (email/domain).

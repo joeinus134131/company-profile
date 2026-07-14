@@ -176,7 +176,8 @@ export default function Admin() {
                     <span className="inquiry-date">{formatDate(i.createdAt)}</span>
                   </div>
                   <p>{i.company} · {i.email} · {i.country}</p>
-                  <p>{i.message}</p>
+                  <p>📍 {i.port || '-'} · 🚢 {i.incoterm || '-'} · 📦 {i.volume || '-'} · 💲 {i.price || '-'}</p>
+                  <p><strong>Specs:</strong> {i.specs_req}</p>
                   <div className="row-actions">
                     <button className="btn btn-sm" onClick={() => updateInquiryStatus(i.id, 'contacted')}>Contacted</button>
                     <button className="btn btn-sm btn-outline" onClick={() => updateInquiryStatus(i.id, 'done')}>Done</button>
@@ -244,13 +245,22 @@ function ProductForm({ data, onCancel, onSave }) {
     spec_id: data.spec_id || '', spec_en: data.spec_en || '',
     moq_id: data.moq_id || '', moq_en: data.moq_en || '',
     cert_id: data.cert_id || '', cert_en: data.cert_en || '',
-    desc_id: data.desc_id || '', desc_en: data.desc_en || ''
+    desc_id: data.desc_id || '', desc_en: data.desc_en || '',
+    specsText: (data.specs || []).map((s) => `${s.label_id} | ${s.label_en} | ${s.value}`).join('\n')
   })
   const set = (k, v) => setD({ ...d, [k]: v })
   const submit = (e) => {
     e.preventDefault()
     if (!d.name_id || !d.name_en) { alert(t('form_required')); return }
-    onSave(d)
+    const specs = d.specsText
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .map((line) => {
+        const parts = line.split('|').map((x) => x.trim())
+        return { label_id: parts[0] || '', label_en: parts[1] || parts[0] || '', value: parts[2] || '' }
+      })
+    onSave({ ...d, specs })
   }
   return (
     <div className="modal-overlay" onClick={onCancel}>
@@ -283,6 +293,8 @@ function ProductForm({ data, onCancel, onSave }) {
           <textarea rows="3" value={d.desc_id} onChange={(e) => set('desc_id', e.target.value)} />
           <label>{t('admin_desc_en')}</label>
           <textarea rows="3" value={d.desc_en} onChange={(e) => set('desc_en', e.target.value)} />
+          <label>Specs (format: LabelID | LabelEN | Value)</label>
+          <textarea rows="4" value={d.specsText} onChange={(e) => set('specsText', e.target.value)} />
           <div className="row-actions">
             <button type="submit" className="btn">{t('admin_save')}</button>
             <button type="button" className="btn btn-outline" onClick={onCancel}>{t('admin_cancel')}</button>

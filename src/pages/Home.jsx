@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLang } from '../i18n.jsx'
 import { useStore } from '../context/StoreContext.jsx'
@@ -5,7 +6,8 @@ import ProductCard from '../components/ProductCard.jsx'
 
 export default function Home() {
   const { t, lang } = useLang()
-  const { products, services, certifications, company } = useStore()
+  const { products, services, certifications, company, gallery } = useStore()
+  const [lightbox, setLightbox] = useState(null)
 
   const featured = products.slice(0, 4)
 
@@ -112,6 +114,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* OPERATIONS GALLERY */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <h2>{t('gallery_title')}</h2>
+            <p>{t('gallery_sub')}</p>
+          </div>
+          <div className="gallery-grid">
+            {gallery.map((g) => (
+              <button
+                key={g.id}
+                className="gallery-item"
+                onClick={() => setLightbox(g)}
+                aria-label={lang === 'id' ? g.caption_id : g.caption_en}
+              >
+                <img src={g.src} alt={lang === 'id' ? g.caption_id : g.caption_en} loading="lazy" />
+                <span className="gallery-cap">{lang === 'id' ? g.caption_id : g.caption_en}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="cta">
         <div className="container">
@@ -119,6 +144,16 @@ export default function Home() {
           <Link to="/contact" className="btn btn-light">{t('hero_cta2')}</Link>
         </div>
       </section>
+
+      {lightbox && (
+        <div className="modal-overlay" onClick={() => setLightbox(null)}>
+          <div className="lightbox" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="close">×</button>
+            <img src={lightbox.src} alt={lang === 'id' ? lightbox.caption_id : lightbox.caption_en} />
+            <p>{lang === 'id' ? lightbox.caption_id : lightbox.caption_en}</p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

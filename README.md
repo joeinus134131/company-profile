@@ -51,10 +51,11 @@ PT Nexflux Indonesia Abadi adalah perusahaan eksportir komoditas alam & produk i
 * **Manajemen Subscriber:** Kelola pendaftar *newsletter* / calon mitra bisnis.
 
 ### ⚡ 3. Fitur Teknis & Non-Fungsional (NFR)
+* **Mobile Bottom Navigation (Android View):** Navigasi bilah bawah khusus perangkat seluler ([MobileBottomNav.jsx](file:///Users/user/company-profile/src/components/MobileBottomNav.jsx)) dengan 4 menu utama interaktif (Beranda, Produk, Profil, Kontak) untuk kenyamanan akses 1-tap ala aplikasi native Android/iOS.
 * **Multi-Bahasa (ID/EN):** Didukung oleh [i18n.jsx](file:///Users/user/company-profile/src/i18n.jsx) dengan persistensi preferensi bahasa di peramban pengguna.
 * **SEO & Meta Lengkap:** Skema JSON-LD Organization, Open Graph tags, file `sitemap.xml`, dan `robots.txt`.
 * **State Management Tanpa Backend:** Menggunakan React Context ([StoreContext.jsx](file:///Users/user/company-profile/src/context/StoreContext.jsx)) + `localStorage` yang diinisialisasi dari [initialData.js](file:///Users/user/company-profile/src/data/initialData.js). Cocok untuk deployment statis ultra-cepat.
-* **Desain Responsif:** Tampilan konsisten di perangkat Mobile, Tablet, maupun Desktop dengan antarmuka elegan modern.
+* **Desain Responsif & Mobile Safe Area:** Tampilan konsisten di perangkat Mobile, Tablet, maupun Desktop dengan antarmuka elegan modern serta kompensasi ruang bawah otomatis pada tampilan seluler.
 
 ---
 
@@ -73,6 +74,7 @@ company-profile/
 │   ├── components/         # Komponen UI Reusable
 │   │   ├── Footer.jsx
 │   │   ├── Layout.jsx
+│   │   ├── MobileBottomNav.jsx # Navigasi Bawah Khusus Android/Mobile (4 Menu)
 │   │   └── Navbar.jsx
 │   ├── context/            # Global State Management
 │   │   └── StoreContext.jsx
