@@ -28,6 +28,17 @@ export default function About() {
                 <li key={i}>{m}</li>
               ))}
             </ul>
+
+            <h3>{t('about_org')}</h3>
+            <div className="org-grid">
+              {(lang === 'id' ? company.org_id : company.org_en).map((o, i) => (
+                <div key={i} className="org-card">
+                  <div className="org-avatar">{o.name.charAt(0)}</div>
+                  <strong>{o.name}</strong>
+                  <span>{o.role}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           <aside className="about-side">

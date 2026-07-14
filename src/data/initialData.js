@@ -34,7 +34,23 @@ export const company = {
   phone: '+62 21 5000 0000',
   address_id: 'Jl. Industri Raya No. 88, Jakarta Timur, Indonesia',
   address_en: 'Jl. Industri Raya No. 88, East Jakarta, Indonesia',
-  maps: 'https://www.google.com/maps/search/Jakarta+Indonesia'
+  maps: 'https://www.google.com/maps/search/Jakarta+Indonesia',
+  mapsEmbed:
+    'https://www.google.com/maps?q=Jakarta,Indonesia&output=embed',
+  org_id: [
+    { role: 'Direktur Utama', name: 'Bapak A. Nexflux' },
+    { role: 'Head of Export', name: 'Ibu S. Abadi' },
+    { role: 'Sales & Marketing International', name: 'Tim Export' },
+    { role: 'Quality Control & Compliance', name: 'Tim QC' },
+    { role: 'Logistics & Documentation', name: 'Tim Logistik' }
+  ],
+  org_en: [
+    { role: 'President Director', name: 'Mr. A. Nexflux' },
+    { role: 'Head of Export', name: 'Ms. S. Abadi' },
+    { role: 'International Sales & Marketing', name: 'Export Team' },
+    { role: 'Quality Control & Compliance', name: 'QC Team' },
+    { role: 'Logistics & Documentation', name: 'Logistics Team' }
+  ]
 }
 
 export const categories = [

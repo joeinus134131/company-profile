@@ -250,6 +250,24 @@ ul { list-style: none; }
 .inquiry-date { margin-left: auto; font-size: 12px; color: var(--gray); }
 .inquiry-card p { font-size: 14px; margin-bottom: 6px; }
 
+/* NEWSLETTER */
+.newsletter-box { margin-top: 22px; border-top: 1px solid var(--border); padding-top: 18px; }
+.newsletter-box h4 { color: var(--primary); margin-bottom: 6px; }
+.newsletter-box p { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
+.subscribe-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.subscribe-form input { flex: 1; min-width: 180px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; }
+
+/* MAP */
+.map-wrap { margin-top: 40px; }
+.map-title { color: var(--primary); margin-bottom: 14px; font-size: 22px; }
+
+/* ORG */
+.org-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+.org-card { background: var(--light); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; text-align: center; }
+.org-avatar { width: 54px; height: 54px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; margin: 0 auto 10px; font-size: 22px; font-weight: 700; }
+.org-card strong { display: block; font-size: 14px; }
+.org-card span { font-size: 12px; color: var(--gray); }
+
 /* MODAL */
 .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); display: grid; place-items: center; z-index: 200; padding: 20px; }
 .modal { background: #fff; border-radius: var(--radius); padding: 28px; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; }

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect } from 'react'
 
 const LangContext = createContext(null)
 
@@ -82,7 +82,36 @@ const translations = {
     footer_contact: 'Kontak',
     footer_quick: 'Tautan Cepat',
     notfound: 'Halaman tidak ditemukan',
-    notfound_back: 'Kembali ke Beranda'
+    notfound_back: 'Kembali ke Beranda',
+    admin_categories: 'Kelola Kategori',
+    admin_add_cat: 'Tambah Kategori',
+    admin_edit_cat: 'Edit Kategori',
+    admin_delete_cat: 'Hapus Kategori',
+    admin_cat_id: 'Nama (ID)',
+    admin_cat_en: 'Nama (EN)',
+    admin_cat_slug: 'Slug',
+    admin_news: 'Kelola Berita',
+    admin_add_news: 'Tambah Berita',
+    admin_edit_news: 'Edit Berita',
+    admin_delete_news: 'Hapus',
+    admin_art_title_id: 'Judul (ID)',
+    admin_art_title_en: 'Judul (EN)',
+    admin_art_cover: 'URL Cover',
+    admin_art_body_id: 'Isi (ID)',
+    admin_art_body_en: 'Isi (EN)',
+    admin_art_date: 'Tanggal (YYYY-MM-DD)',
+    admin_subscribers: 'Subscriber Newsletter',
+    admin_del_sub: 'Hapus',
+    subscribe_title: 'Berlangganan Newsletter',
+    subscribe_sub: 'Dapatkan update produk & berita ekspor terbaru.',
+    subscribe_email: 'Email',
+    subscribe_placeholder: 'email@perusahaan.com',
+    subscribe_success: 'Terima kasih telah berlangganan!',
+    subscribe: 'Langganan',
+    about_org: 'Struktur Organisasi',
+    org: 'Tim',
+    maps_title: 'Lokasi Kami',
+    admin_cfg_note: 'Email belum dikonfigurasi (VITE_EMAILJS_*). Inquiry tetap tersimpan secara lokal.'
   },
   en: {
     nav_home: 'Home',
@@ -163,7 +192,36 @@ const translations = {
     footer_contact: 'Contact',
     footer_quick: 'Quick Links',
     notfound: 'Page not found',
-    notfound_back: 'Back to Home'
+    notfound_back: 'Back to Home',
+    admin_categories: 'Manage Categories',
+    admin_add_cat: 'Add Category',
+    admin_edit_cat: 'Edit Category',
+    admin_delete_cat: 'Delete Category',
+    admin_cat_id: 'Name (ID)',
+    admin_cat_en: 'Name (EN)',
+    admin_cat_slug: 'Slug',
+    admin_news: 'Manage News',
+    admin_add_news: 'Add News',
+    admin_edit_news: 'Edit News',
+    admin_delete_news: 'Delete',
+    admin_art_title_id: 'Title (ID)',
+    admin_art_title_en: 'Title (EN)',
+    admin_art_cover: 'Cover URL',
+    admin_art_body_id: 'Body (ID)',
+    admin_art_body_en: 'Body (EN)',
+    admin_art_date: 'Date (YYYY-MM-DD)',
+    admin_subscribers: 'Newsletter Subscribers',
+    admin_del_sub: 'Delete',
+    subscribe_title: 'Subscribe to Newsletter',
+    subscribe_sub: 'Get the latest export products & news updates.',
+    subscribe_email: 'Email',
+    subscribe_placeholder: 'email@company.com',
+    subscribe_success: 'Thank you for subscribing!',
+    subscribe: 'Subscribe',
+    about_org: 'Organization Structure',
+    org: 'Team',
+    maps_title: 'Our Location',
+    admin_cfg_note: 'Email not configured (VITE_EMAILJS_*). Inquiry is still saved locally.'
   }
 }
 
@@ -174,9 +232,14 @@ export function LangProvider({ children }) {
     setLang((prev) => {
       const next = prev === 'id' ? 'en' : 'id'
       localStorage.setItem('nf_lang', next)
+      document.documentElement.lang = next
       return next
     })
   }, [])
+
+  useEffect(() => {
+    document.documentElement.lang = lang
+  }, [lang])
 
   const t = (key) => translations[lang][key] ?? key
 
