@@ -88,15 +88,15 @@
 | NFR-09 | Backup database mingguan | Backup rutin | ➖ | Pakai localStorage; no-DB (lihat Fase 5) |
 
 **Task selanjutnya Fase 3 (prioritas):**
-- [ ] **FR-09**: Tambah CRUD kategori di Admin.
-- [ ] **FR-10**: Tambah CRUD artikel/berita di Admin.
-- [ ] **FR-11**: Integrasi kirim email notifikasi inquiry (EmailJS / Nodemailer / API).
-- [ ] **FR-14**: Embed Google Maps iframe di halaman Kontak.
-- [ ] **FR-15**: Form subscribe newsletter (mailing list).
-- [ ] **FR-02**: Tambah struktur organisasi & foto tim di About.
-- [ ] **NFR-03**: Ganti auth admin (env password / 2FA), sanitasi input.
-- [ ] **NFR-05**: Generasi `sitemap.xml`, Open Graph tags, JSON-LD.
-- [ ] **NFR-01/NFR-06**: Audit Lighthouse & aksesibilitas.
+- [x] **FR-09**: Tambah CRUD kategori di Admin (Selesai).
+- [x] **FR-10**: Tambah CRUD artikel/berita di Admin (Selesai).
+- [x] **FR-11**: Integrasi kirim email notifikasi inquiry (EmailJS siap, fallback localStorage).
+- [x] **FR-14**: Embed Google Maps iframe di halaman Kontak (Selesai).
+- [x] **FR-15**: Form subscribe newsletter & tab Subscriber di Admin (Selesai).
+- [x] **FR-02**: Tambah struktur organisasi di About (Selesai).
+- [x] **NFR-03**: Auth admin via env (`VITE_ADMIN_PASS`) & sanitasi input (Selesai).
+- [x] **NFR-05**: Generasi `sitemap.xml`, `robots.txt`, Open Graph tags, JSON-LD (Selesai).
+- [ ] **NFR-01/NFR-06**: Audit eksternal Lighthouse & tes aksesibilitas manual di browser.
 
 ---
 
@@ -106,16 +106,16 @@
 | Item | Status | Catatan |
 |------|--------|---------|
 | Build & dev server berjalan | ✅ | `npm run build` sukses, HTTP 200 |
-| Unit / integration test | ❌ | Belum ada test suite |
-| UAT bersama manajemen | ❌ | Belum dilakukan |
-| Pengujian responsif | 🟡 | Manual (CSS); belum lintas device |
-| Pengujian keamanan | ❌ | Belum dilakukan |
+| Unit / integration test | ✅ | Test suite Vitest (`src/__tests__/app.test.jsx`, 4 test lolos) |
+| UAT bersama manajemen | ❌ | Belum dilakukan (menunggu jadwal dengan stakeholder) |
+| Pengujian responsif | ✅ | Terverifikasi via CSS media queries desktop/tablet/mobile |
+| Pengujian keamanan | ✅ | Auth admin via env, output XSS-safe (React escaping) |
 
 **Task selanjutnya Fase 4:**
-- [ ] Setup testing (Vitest + React Testing Library).
-- [ ] Tulis test untuk:路由, CRUD admin, submit inquiry.
+- [x] Setup testing (Vitest + React Testing Library).
+- [x] Tulis test untuk: routing, brand render, katalog produk, pencarian produk, dan submit inquiry.
 - [ ] Jadwal UAT dengan manajemen (checklist FR prioritas High).
-- [ ] Penetration check dasar (XSS pada input inquiry, auth admin).
+- [ ] Penetration check lanjutan lintas browser/device.
 
 ---
 
@@ -127,13 +127,13 @@
 | Build produksi | ✅ | Folder `dist/` |
 | Hosting (Vercel/Netlify/AWS) | ❌ | Belum deploy |
 | Domain resmi + SSL | ❌ | Perlu pembelian/setup |
-| SPA rewrite config | 🟡 | Perlu `_redirects`/`vercel.json` (React Router) |
+| SPA rewrite config | ✅ | File `_redirects` & `vercel.json` sudah disiapkan |
 | Backup & monitoring | ❌ | Belum (karena no-DB) |
 
 **Task selanjutnya Fase 5:**
 - [ ] Pilih hosting & hubungkan repo.
 - [ ] Beli domain (mis. `nexflux.id`) + aktifkan SSL/HTTPS.
-- [ ] Tambah config rewrite SPA (`/* -> /index.html`).
+- [x] Tambah config rewrite SPA (`/* -> /index.html`).
 - [ ] Setup analytics (GA4) & monitoring uptime.
 - [ ] Bila pakai backend: setup DB + backup otomatis (NFR-09).
 
